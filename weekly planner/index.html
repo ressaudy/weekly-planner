@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weekly Planner</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Weekly Planner</h1>
+      <p id="dateLabel">Minggu ini</p>
+    </div>
+    <div class="week-badge" id="weekBadge">Pekan —</div>
+  </div>
+
+  <!-- ── Quote Harian ── -->
+  <div class="quote-card">
+    <div class="quote-icon">"</div>
+    <div class="quote-label">Quote harian</div>
+    <textarea class="quote-input" rows="2" id="quoteInput" placeholder="Tulis quote inspirasi hari ini..."></textarea>
+  </div>
+
+  <!-- ── Main Grid ── -->
+  <div class="main-grid">
+
+    <!-- Left Column -->
+    <div class="left-col">
+
+      <!-- Weekly Table -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-title-dot dot-blue"></span>Weekly Plan
+        </div>
+        <table class="week-table">
+          <thead>
+            <tr>
+              <th style="width:100px">Waktu</th>
+              <th style="width:90px">Hari</th>
+              <th>Aktivitas / Target</th>
+              <th style="width:110px">Status</th>
+              <th style="width:30px"></th>
+            </tr>
+          </thead>
+          <tbody id="weekBody"></tbody>
+        </table>
+        <button class="add-row-btn" onclick="addRow()">+ Tambah baris</button>
+      </div>
+
+      <!-- Progress -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-title-dot dot-green"></span>Progress minggu ini
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-num green" id="statDone">0</div>
+            <div class="stat-lbl">Selesai</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num yellow" id="statProg">0</div>
+            <div class="stat-lbl">On-going</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num blue" id="statPct">0%</div>
+            <div class="stat-lbl">Completion</div>
+          </div>
+        </div>
+        <div class="prog-track">
+          <div class="prog-fill" id="progFill" style="width:0%"></div>
+        </div>
+        <div class="prog-label">
+          <span id="progLeft">0%</span>
+          <span id="progRight">0 / 0 task selesai</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-col">
+
+      <!-- Pomodoro -->
+      <div class="pomo-card">
+        <div class="pomo-label">Pomodoro Timer</div>
+        <div class="pomo-timer" id="pomoTime">25:00</div>
+        <div class="pomo-mode-badge" id="pomoModeBadge">Fokus</div>
+        <div class="pomo-controls">
+          <button class="pomo-btn" id="btnStart" onclick="togglePomo()">Mulai</button>
+          <button class="pomo-btn" onclick="resetPomo()">Reset</button>
+        </div>
+        <div class="pomo-modes">
+          <button class="pomo-mode-btn selected" onclick="setMode('focus',25,this)">Fokus 25m</button>
+          <button class="pomo-mode-btn" onclick="setMode('short',5,this)">Istirahat 5m</button>
+          <button class="pomo-mode-btn" onclick="setMode('long',15,this)">Istirahat 15m</button>
+        </div>
+        <div class="pomo-sessions" id="pomoCnt">Sesi selesai: 0</div>
+      </div>
+
+      <!-- To-do List -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-title-dot dot-blue"></span>To-do List
+        </div>
+        <div id="todoList"></div>
+        <button class="add-todo-btn" onclick="addTodo()">+ Tambah tugas</button>
+      </div>
+
+      <!-- Notes -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-title-dot dot-yellow"></span>Notes
+        </div>
+        <textarea class="notes-area" id="notesArea" rows="5" placeholder="Catatan, ide, reminder..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
